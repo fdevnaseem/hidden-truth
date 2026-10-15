@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>THE FREQUENCY // PARTY POOPER UNDERGROUND</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<!-- Space Grotesk, Space Mono, Permanent Marker, Rubik Glitch, Special Elite -->
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&amp;family=Rubik+Glitch&amp;family=Space+Grotesk:wght@400;600;700;900&amp;family=Space+Mono:ital,wght@0,400;0,700;1,700&amp;family=Special+Elite&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "spray-pink": "#ff1493",
+            "neon-pink": "#ff007f",
+            "acid-lime": "#ccff00",
+            "toxic-green": "#a6ff00",
+            "spray-cyan": "#00f0ff",
+            "electric-blue": "#0070f3",
+            "caution-yellow": "#ffe600",
+            "zine-black": "#121113",
+            "zine-paper": "#f5f3ec",
+            "dirty-paper": "#ede9dd",
+            "tape-beige": "rgba(235, 225, 195, 0.85)",
+            "primary": "#506600",
+            "primary-container": "#ccff00",
+            "secondary": "#b60059",
+            "secondary-container": "#e30071",
+            "tertiary": "#006970",
+            "on-surface": "#1b1b20",
+            "background": "#0d0c0e"
+          },
+          fontFamily: {
+            "marker": ["'Permanent Marker'", "cursive"],
+            "glitch": ["'Rubik Glitch'", "display"],
+            "typewriter": ["'Special Elite'", "monospace"],
+            "mono": ["'Space Mono'", "monospace"],
+            "grotesk": ["'Space Grotesk'", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    body {
+      background-color: #0e0d11;
+      background-image: 
+        radial-gradient(ellipse at 15% 10%, rgba(255, 20, 147, 0.18) 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 30%, rgba(204, 255, 0, 0.16) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 85%, rgba(0, 240, 255, 0.14) 0%, transparent 55%),
+        radial-gradient(#201e26 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px;
+      color: #ede9dd;
+      overflow-x: hidden;
+    }
+
+    /* Tape strip illusions */
+    .masking-tape {
+      background: rgba(246, 241, 217, 0.82);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.25), inset 0 0 4px rgba(210,195,150,0.5);
+      border-left: 2px dashed rgba(160, 140, 100, 0.4);
+      border-right: 2px dashed rgba(160, 140, 100, 0.4);
+      backdrop-filter: blur(2px);
+    }
+    .masking-tape-pink {
+      background: rgba(255, 20, 147, 0.85);
+      box-shadow: 0 2px 8px rgba(255, 20, 147, 0.4);
+      border-left: 2px dashed rgba(255, 255, 255, 0.5);
+      border-right: 2px dashed rgba(255, 255, 255, 0.5);
+    }
+    .masking-tape-neon {
+      background: rgba(204, 255, 0, 0.9);
+      box-shadow: 0 2px 8px rgba(204, 255, 0, 0.4);
+      border-left: 2px dashed rgba(0, 0, 0, 0.4);
+      border-right: 2px dashed rgba(0, 0, 0, 0.4);
+    }
+
+    /* Highlighter streak */
+    .highlighter-yellow {
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+    }
+    .highlighter-yellow::before {
+      content: "";
+      position: absolute;
+      left: -4px;
+      right: -6px;
+      bottom: 2px;
+      height: 70%;
+      background: #ccff00;
+      transform: skewX(-10deg) rotate(-1.5deg);
+      z-index: -1;
+      opacity: 0.95;
+    }
+    .highlighter-pink {
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+    }
+    .highlighter-pink::before {
+      content: "";
+      position: absolute;
+      left: -3px;
+      right: -3px;
+      bottom: 0px;
+      height: 60%;
+      background: #ff007f;
+      transform: skewX(-8deg) rotate(1deg);
+      z-index: -1;
+      opacity: 0.9;
+    }
+
+    /* Stamped sticker look */
+    .sticker-stamp {
+      filter: drop-shadow(3px 4px 6px rgba(0, 0, 0, 0.7));
+      transition: transform 0.15s ease;
+    }
+    .sticker-stamp:hover {
+      transform: scale(1.04) rotate(0deg) !important;
+    }
+
+    /* Ripped paper edge simulation */
+    .torn-paper {
+      background: #faf8f0;
+      box-shadow: 0 10px 30px -5px rgba(0,0,0,0.7), 0 0 1px 1px rgba(255,255,255,0.1);
+      clip-path: polygon(
+        0% 0.5%, 3% 0%, 7% 0.8%, 12% 0.2%, 18% 0.7%, 24% 0.1%, 31% 0.9%, 38% 0.3%, 45% 0.8%, 52% 0.2%, 60% 0.9%, 68% 0.1%, 75% 0.7%, 83% 0.2%, 91% 0.8%, 97% 0.1%, 100% 0.6%,
+        99.8% 99.4%, 96% 100%, 89% 99.2%, 82% 99.8%, 74% 99.1%, 67% 99.9%, 59% 99.3%, 51% 99.7%, 43% 99.2%, 35% 100%, 27% 99.3%, 19% 99.8%, 11% 99.1%, 5% 99.9%, 0% 99.4%
+      );
+    }
+    .torn-dark {
+      background: #17151c;
+      box-shadow: 0 10px 30px -5px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.06);
+      clip-path: polygon(
+        0% 0.4%, 4% 0.9%, 9% 0.1%, 16% 0.8%, 23% 0.2%, 32% 0.9%, 41% 0.1%, 50% 0.8%, 59% 0.3%, 69% 0.9%, 78% 0.1%, 87% 0.8%, 95% 0.2%, 100% 0.7%,
+        99.6% 99.5%, 95% 99.1%, 88% 99.9%, 80% 99.2%, 71% 99.8%, 62% 99.1%, 53% 99.7%, 44% 99.2%, 35% 99.9%, 26% 99.3%, 17% 99.8%, 8% 99.2%, 0% 99.6%
+      );
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-ticker {
+      display: inline-flex;
+      white-space: nowrap;
+      animation: marquee 16s linear infinite;
+    }
+    .animate-ticker:hover {
+      animation-play-state: paused;
+    }
+
+    /* Spray drip effect */
+    .spray-glow-pink {
+      text-shadow: 0 0 12px #ff1493, 0 0 24px rgba(255, 20, 147, 0.6);
+    }
+    .spray-glow-lime {
+      text-shadow: 0 0 10px #ccff00, 0 0 22px rgba(204, 255, 0, 0.6);
+    }
+    .spray-glow-cyan {
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px rgba(0, 240, 255, 0.6);
+    }
+  </style>
+</head>
+<body class="font-grotesk antialiased min-h-screen flex flex-col selection:bg-neon-pink selection:text-white relative">
+<!-- TOP DESTRUCTIVE STREAM TICKER (Distorted Duct Tape Style) -->
+<header class="fixed top-0 left-0 right-0 z-50">
+<div class="bg-caution-yellow text-zinc-950 font-mono text-xs uppercase font-extrabold tracking-widest py-1 overflow-hidden shadow-lg border-b border-yellow-500 transform -rotate-[0.3deg] origin-left">
+<div class="animate-ticker">
+<span class="px-6 flex items-center gap-3">
+<span class="bg-red-600 text-white px-1 font-marker text-xs rotate-2">ALERT</span>
+<span>/// UNDERGROUND SIGNAL PIRATED /// SHUT DOWN THE SYSTEM'S PLAYLIST /// REALITY GLITCH DETECTED /// DO NOT DRINK THE NEON COOL-AID /// TRUTH SQUAD DEPLOYED /// PARTY'S OVER ///</span>
+</span>
+<span class="px-6 flex items-center gap-3">
+<span class="bg-red-600 text-white px-1 font-marker text-xs -rotate-2">ALERT</span>
+<span>/// UNDERGROUND SIGNAL PIRATED /// SHUT DOWN THE SYSTEM'S PLAYLIST /// REALITY GLITCH DETECTED /// DO NOT DRINK THE NEON COOL-AID /// TRUTH SQUAD DEPLOYED /// PARTY'S OVER ///</span>
+</span>
+</div>
+</div>
+<!-- MAIN NAV HEADER: Ripped collage cardboard feel -->
+<div class="backdrop-blur-md bg-zinc-950/85 border-b border-zinc-800/80 px-4 md:px-8 py-3 flex items-center justify-between gap-4">
+<!-- LOGO / SPRAY-PAINT BRAND -->
+<div class="flex items-center gap-3">
+<div class="relative group cursor-pointer">
+<!-- Splatter circle backdrop -->
+<div class="absolute -inset-1.5 bg-gradient-to-r from-neon-pink via-spray-cyan to-acid-lime rounded-full blur-sm opacity-70 group-hover:opacity-100 transition duration-200"></div>
+<div class="relative bg-zinc-900 p-1.5 rounded-lg border border-zinc-700/80 transform -rotate-3 flex items-center justify-center">
+<img alt="TRUTH//RAVE Cult Eye Logo" class="h-9 w-9 object-contain filter contrast-125" src="https://lh3.googleusercontent.com/aida/AEtjO1VhNdBkdW2sIuPzEPDj_olYfS0i3TD4ckFnkuNLCyyVRxlA36TgoechkirrOnm03UDy3fI2uzVfAK5cQfGs9vgjAMgDSyHl4w4n_IJhmxyWfzYuIixlvdBGLiyCuLjUXs75qDkPcSztMy-e8bL237MtSLRzVavjCN1wGEr8Y7HDQtEUS6Q5CuwrKirLZ6uOx5dVv8BEAoz9IdQ9z8UEwEwcYn5kbP56wynXc5T9trxSYbyFjCr62VBilLw"/>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-marker text-xl md:text-2xl text-white tracking-wider spray-glow-pink">THE FREQUENCY</span>
+<span class="font-glitch text-lg text-acid-lime hidden sm:inline">//</span>
+<span class="font-mono text-xs md:text-sm font-bold bg-neon-pink text-white px-2 py-0.5 rounded -rotate-2 shadow-[0_0_12px_rgba(255,0,127,0.7)]">PARTY POOPER CULT</span>
+</div>
+<div class="flex items-center gap-2 text-[10px] font-mono text-zinc-400">
+<span class="inline-block w-2 h-2 rounded-full bg-toxic-green animate-ping"></span>
+<span>14,802 AWAKE TEENS DERAILING THE NARRATIVE</span>
+</div>
+</div>
+</div>
+<!-- COLLAGE LABEL NAV -->
+<nav class="hidden md:flex items-center gap-3 font-mono text-xs font-bold" data-active-classes="bg-acid-lime text-zinc-950 shadow-[0_0_15px_rgba(204,255,0,0.6)]">
+<a aria-current="page" class="bg-acid-lime text-zinc-950 px-3 py-1.5 rounded-sm transform -rotate-1 shadow-[0_0_15px_rgba(204,255,0,0.4)] hover:rotate-0 transition-transform" data-path="live-broadcast" href="#">
+          [★ LIVE BROADCAST]
+        </a>
+<a class="bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white px-3 py-1.5 rounded-sm transform rotate-1 border border-zinc-700 hover:border-spray-pink transition-all" data-path="decrypt-logs" href="#">
+          DECRYPT LOGS
+        </a>
+<a class="bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white px-3 py-1.5 rounded-sm transform -rotate-1 border border-zinc-700 hover:border-spray-cyan transition-all hidden lg:inline-block" data-path="transmission-protocol" href="#">
+          ZINE PROTOCOL
+        </a>
+<a class="bg-gradient-to-r from-neon-pink to-purple-600 text-white px-3 py-1.5 rounded-sm transform rotate-2 shadow-md hover:scale-105 transition-all flex items-center gap-1" data-path="submit-leak" href="#">
+<span>SUBMIT LEAK</span>
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+</a>
+</nav>
+<!-- AGENT AVATAR / SPRAY-TAG IDENTITY -->
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-9 h-9 rounded-full bg-gradient-to-br from-acid-lime to-emerald-500 p-0.5 transform rotate-6 shadow-md">
+<div class="w-full h-full rounded-full bg-zinc-900 flex items-center justify-center text-acid-lime font-mono text-xs font-bold">
+<span class="material-symbols-outlined text-[20px]">skull</span>
+</div>
+</div>
+<span class="absolute -bottom-1 -right-1 bg-red-600 text-white font-mono text-[9px] px-1 rounded-sm">ROGUE</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN RIOT ARENA -->
+<main class="w-full pt-28 pb-20 flex-1 relative z-10">
+<div class="flex flex-col w-full px-3 sm:px-6 md:px-8 max-w-7xl mx-auto space-y-12">
+<!-- ================= HERO ZINE MANIFESTO ================= -->
+<section class="relative w-full">
+<!-- Floating tape accents -->
+<div class="absolute -top-4 left-8 md:left-24 z-20 masking-tape px-6 py-1 font-mono text-xs tracking-wider text-zinc-800 transform -rotate-3 select-none">
+          ⚠ ANARCHIC PIRATE COGNITIVE OVERRIDE
+        </div>
+<div class="absolute -top-3 right-6 md:right-32 z-20 masking-tape-pink text-white font-marker text-xs px-5 py-1 transform rotate-4 shadow-md select-none">
+          POOP THE SYSTEM'S PARTY!
+        </div>
+<!-- HERO CONTAINER: Photocopy Zine cut-and-paste collage -->
+<div class="relative bg-zinc-900/90 border border-zinc-800 rounded-2xl p-6 sm:p-10 md:p-12 overflow-hidden shadow-2xl backdrop-blur-xl">
+<!-- Spray splatter visual decorations -->
+<div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-gradient-to-br from-neon-pink/20 to-purple-600/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-gradient-to-tr from-acid-lime/20 to-emerald-500/10 blur-3xl pointer-events-none"></div>
+<!-- Watermark text in background -->
+<div class="absolute right-4 top-1/2 -translate-y-1/2 hidden xl:block opacity-5 select-none font-marker text-9xl text-white pointer-events-none -rotate-12">
+            DISOBEY
+          </div>
+<div class="max-w-4xl relative z-10 space-y-6">
+<!-- STICKER BADGES -->
+<div class="flex flex-wrap items-center gap-3">
+<span class="sticker-stamp inline-flex items-center gap-1.5 bg-black text-toxic-green border border-toxic-green/60 font-mono text-xs px-3 py-1 rounded-sm transform -rotate-2">
+<span class="material-symbols-outlined text-sm">radio</span>
+                FREQ DISPATCH #882 // PIRATE CUTOUT
+              </span>
+<span class="sticker-stamp inline-block bg-spray-pink text-white font-marker text-xs tracking-wider px-3 py-1 rounded-sm transform rotate-3 shadow-lg">
+                NO BORING CLUB MUSIC // WAKE UP
+              </span>
+<span class="sticker-stamp inline-block bg-zinc-800 text-zinc-300 font-typewriter text-xs px-2.5 py-1 rounded transform -rotate-1 border border-zinc-700">
+                STENCIL REV 0.99
+              </span>
+</div>
+<!-- MAIN PUNCHY HEADLINE WITH JAGGED HIGHLIGHTERS -->
+<div class="space-y-2">
+<h1 class="font-grotesk text-3xl sm:text-5xl md:text-6xl font-black uppercase text-white tracking-tight leading-none">
+                THE MATRIX IS JUST A 
+                <span class="inline-block relative mx-1.5 transform -rotate-1">
+<span class="bg-acid-lime text-zinc-950 font-marker px-3 py-0.5 rounded shadow-[0_0_20px_rgba(204,255,0,0.8)] inline-block transform -rotate-2">
+                    BAD RAVE.
+                  </span>
+</span>
+<br class="hidden sm:inline"/>
+                HERE ARE THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-spray-pink via-spray-cyan to-acid-lime underline decoration-wavy decoration-neon-pink">DECRYPTED TRUTHS</span>.
+              </h1>
+</div>
+<!-- MANIFESTO TEXT -->
+<p class="font-grotesk text-base sm:text-lg md:text-xl text-zinc-300 max-w-2xl font-normal leading-relaxed">
+              Official narratives are synthetic soundscapes manufactured to keep your brainwaves on loop. We decode underground bass anomalies, hacked strobe ciphers, and illegal frequencies before the hall monitors shut off the circuit.
+            </p>
+<!-- STREET-ART FILTER PILLS -->
+<div class="pt-2 flex flex-wrap gap-2.5 items-center">
+<button class="bg-acid-lime text-zinc-950 font-mono text-xs font-black px-3.5 py-1.5 rounded transform -rotate-1 shadow-[0_0_12px_rgba(204,255,0,0.5)] hover:scale-105 active:scale-95 transition-all">
+                ⚡ [ALL FREQUENCIES (ACTIVE)]
+              </button>
+<button class="bg-zinc-800/90 hover:bg-zinc-700 text-zinc-300 hover:text-white font-mono text-xs px-3 py-1.5 rounded transform rotate-1 border border-zinc-700 hover:border-spray-pink transition-all">
+                # SUBLIMINAL AUDIO ARCHIVES
+              </button>
+<button class="bg-zinc-800/90 hover:bg-zinc-700 text-zinc-300 hover:text-white font-mono text-xs px-3 py-1.5 rounded transform -rotate-1 border border-zinc-700 hover:border-spray-cyan transition-all">
+                # GLOBAL WEATHER GLITCH
+              </button>
+<button class="bg-zinc-800/90 hover:bg-zinc-700 text-zinc-300 hover:text-white font-mono text-xs px-3 py-1.5 rounded transform rotate-2 border border-zinc-700 hover:border-acid-lime transition-all">
+                # HOLOGRAM CELEBS
+              </button>
+<button class="bg-zinc-800/90 hover:bg-zinc-700 text-zinc-300 hover:text-white font-mono text-xs px-3 py-1.5 rounded transform -rotate-2 border border-zinc-700 hover:border-neon-pink transition-all">
+                # SYNTHETIC DREAMS
+              </button>
+</div>
+</div>
+<!-- BOTTOM RIPPED STAT STRIP: Neon Graffiti Counters -->
+<div class="mt-8 pt-6 border-t border-zinc-800 grid grid-cols-1 sm:grid-cols-3 gap-4 relative z-10">
+<div class="bg-zinc-950/70 border border-zinc-800 p-3 rounded-lg flex items-center justify-between transform -rotate-1 hover:border-acid-lime transition-all">
+<div class="flex flex-col">
+<span class="font-mono text-[11px] text-zinc-400 font-bold uppercase tracking-wider">TRUTHS EXPOSED:</span>
+<span class="font-marker text-2xl text-acid-lime spray-glow-lime">412 DEBUNKED</span>
+</div>
+<span class="material-symbols-outlined text-acid-lime text-2xl">verified_user</span>
+</div>
+<div class="bg-zinc-950/70 border border-zinc-800 p-3 rounded-lg flex items-center justify-between transform rotate-1 hover:border-spray-pink transition-all">
+<div class="flex flex-col">
+<span class="font-mono text-[11px] text-zinc-400 font-bold uppercase tracking-wider">ANONYMOUS SPIES:</span>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-spray-pink animate-ping"></span>
+<span class="font-marker text-2xl text-spray-pink spray-glow-pink">94,210 AWAKE</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-spray-pink text-2xl">visibility</span>
+</div>
+<div class="bg-zinc-950/70 border border-zinc-800 p-3 rounded-lg flex items-center justify-between transform -rotate-1 hover:border-spray-cyan transition-all">
+<div class="flex flex-col">
+<span class="font-mono text-[11px] text-zinc-400 font-bold uppercase tracking-wider">CENSOR BLOCKS:</span>
+<span class="font-marker text-2xl text-spray-cyan spray-glow-cyan">1,883 SHREDDED</span>
+</div>
+<span class="material-symbols-outlined text-spray-cyan text-2xl">lock_open</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= TWO CHAOTIC ZINE DOSSIERS ================= -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start relative">
+<!-- DOSSIER #01: TAPE-PINNED UNDERGROUND FLYER -->
+<article class="relative torn-paper text-zinc-900 p-6 md:p-8 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+<!-- Duct tape corners holding the flyer down -->
+<div class="absolute -top-3 left-10 masking-tape px-6 py-1.5 font-mono text-[10px] font-bold text-zinc-800 transform -rotate-6 z-20 select-none shadow">
+            TAPE: EVIDENCE #01
+          </div>
+<div class="absolute -top-3 right-8 masking-tape-pink text-white font-mono text-[10px] font-bold px-4 py-1 transform rotate-12 z-20 select-none shadow">
+            LEAKED 1999 CIPHER
+          </div>
+<!-- Stamped badge -->
+<div class="flex justify-between items-start gap-2 mb-4 pt-2">
+<span class="sticker-stamp bg-zinc-950 text-acid-lime font-mono text-xs font-bold px-2.5 py-1 rounded transform -rotate-3 inline-block">
+              CLASSIFIED DOSSIER #882
+            </span>
+<span class="sticker-stamp bg-red-600 text-white font-marker text-xs px-2.5 py-0.5 rounded transform rotate-3 shadow">
+              LEVEL: 99.4% REAL
+            </span>
+</div>
+<!-- Heading & Metadata with marker accents -->
+<div class="space-y-3 mb-5">
+<h2 class="font-grotesk text-2xl sm:text-3xl font-black uppercase text-zinc-950 leading-tight">
+              OPERATION BASSLINE: <span class="bg-caution-yellow px-1 underline decoration-red-600">HOW 140 BPM</span> ELECTRONIC MUSIC BROKE MASS HYPNOSIS IN 1999
+            </h2>
+<div class="font-mono text-xs text-zinc-600 flex flex-wrap gap-x-4 gap-y-1 font-semibold border-b border-dashed border-zinc-400 pb-2">
+<span>DECODED: 2H AGO</span>
+<span class="text-zinc-800">SOURCE: DJ-OMEGA</span>
+<span class="text-red-600 font-bold">STATUS: UNFILTERED LEAK</span>
+</div>
+</div>
+<!-- GLITCHY AUDIO LAB SCHEMATIC -->
+<div class="bg-zinc-950 text-zinc-200 p-4 rounded-lg space-y-3 relative overflow-hidden mb-5 border border-zinc-800 shadow-inner">
+<div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+<span class="font-mono text-xs text-acid-lime font-bold uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">graphic_eq</span>
+                BERLIN BUNKER SPECTRUM RECOVERY [1997]
+              </span>
+<span class="bg-red-950 text-red-400 font-mono text-[10px] px-1.5 py-0.5 rounded border border-red-800">
+                DESYNC ACTIVE
+              </span>
+</div>
+<!-- Chaotic Equalizer Visualizer Bars -->
+<div class="w-full h-24 flex items-end gap-1.5 bg-zinc-900/90 p-2 rounded relative">
+<div class="bg-acid-lime w-2.5 h-6 animate-pulse rounded-t-sm"></div>
+<div class="bg-acid-lime w-2.5 h-12 rounded-t-sm"></div>
+<div class="bg-neon-pink w-2.5 h-20 animate-pulse rounded-t-sm"></div>
+<div class="bg-acid-lime w-2.5 h-14 rounded-t-sm"></div>
+<div class="bg-spray-cyan w-2.5 h-full rounded-t-sm"></div>
+<div class="bg-acid-lime w-2.5 h-9 rounded-t-sm"></div>
+<div class="bg-neon-pink w-2.5 h-24 animate-bounce rounded-t-sm"></div>
+<div class="bg-acid-lime w-2.5 h-16 rounded-t-sm"></div>
+<div class="bg-spray-cyan w-2.5 h-10 rounded-t-sm"></div>
+<div class="bg-acid-lime w-2.5 h-8 rounded-t-sm"></div>
+<div class="bg-neon-pink w-2.5 h-16 rounded-t-sm"></div>
+<div class="bg-acid-lime w-2.5 h-20 animate-pulse rounded-t-sm"></div>
+<div class="bg-spray-cyan w-2.5 h-14 rounded-t-sm"></div>
+<div class="bg-neon-pink w-2.5 h-full rounded-t-sm"></div>
+<div class="bg-acid-lime w-2.5 h-10 rounded-t-sm"></div>
+<div class="bg-spray-cyan w-2.5 h-14 rounded-t-sm"></div>
+<div class="bg-neon-pink w-2.5 h-20 animate-pulse rounded-t-sm"></div>
+<div class="bg-acid-lime w-2.5 h-6 rounded-t-sm"></div>
+</div>
+<div class="flex items-center justify-between text-[11px] font-mono text-zinc-400">
+<span>CARRIER: 432Hz HARMONIC INTERFERENCE</span>
+<span class="text-acid-lime font-bold">FREQUENCY DESTABILIZED</span>
+</div>
+</div>
+<!-- Body Narrative with interactive redaction bars -->
+<div class="font-typewriter text-sm text-zinc-900 space-y-3 leading-relaxed mb-6">
+<p>
+              In the winter of 1997, undercover sound engineers operating beneath subterranean clubs in Berlin discovered that standard 4/4 kicks pitched precisely at 140 BPM systematically fragmented the microwave carrier waves broadcast by <span class="bg-zinc-950 text-zinc-950 px-1 py-0.5 rounded transition-all duration-200 cursor-pointer select-all font-mono text-xs redaction-block" data-redacted="TELECOM SYNDICATE ALPHA">TELECOM SYNDICATE ALPHA</span>.
+            </p>
+<p>
+              When dancers gathered in masses over 5,000 bodies, the collective resonance shattered subliminal obedience implants, prompting the clandestine shutdown known as <span class="bg-zinc-950 text-zinc-950 px-1 py-0.5 rounded transition-all duration-200 cursor-pointer select-all font-mono text-xs redaction-block" data-redacted="PROJECT SILENT TREBLE">PROJECT SILENT TREBLE</span>. Sub-woofers were subsequently throttled by municipal ordinance.
+            </p>
+</div>
+<!-- Redaction Decrypt Action Bar -->
+<div class="p-3 bg-zinc-200/80 rounded-lg flex flex-col sm:flex-row items-center justify-between gap-3 mb-6 border border-zinc-300">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-red-600 text-lg">visibility_off</span>
+<span class="font-mono text-xs font-bold text-zinc-800 uppercase">[2 REDACTED NAMES HIDDEN]</span>
+</div>
+<button class="w-full sm:w-auto bg-zinc-950 hover:bg-neon-pink text-white font-mono text-xs uppercase px-3 py-1.5 rounded transition-colors font-bold shadow" id="toggle-redaction-btn">
+              UNMASK REDACTED NAMES
+            </button>
+</div>
+<!-- Card Footer Hype Amplitude Button -->
+<div class="pt-4 border-t border-zinc-300 flex items-center justify-between gap-2 flex-wrap">
+<button class="bg-neon-pink hover:bg-pink-600 text-white font-marker text-sm px-4 py-2 rounded transform -rotate-1 shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2" id="hype-btn-01">
+<span>🔥 AMPLIFY SIGNAL:</span>
+<span id="hype-count-01">8,421 AWAKENED</span>
+</button>
+<span class="font-mono text-[11px] text-zinc-600 font-bold uppercase">
+              // TRANSMIT PIRATE WAVE
+            </span>
+</div>
+</article>
+<!-- DOSSIER #02: XEROX SCAN / ATMOSPHERIC SATELLITE DESYNC -->
+<article class="relative torn-dark text-zinc-200 p-6 md:p-8 transform rotate-1 hover:rotate-0 transition-transform duration-300">
+<!-- Masking tape accents -->
+<div class="absolute -top-3 left-8 masking-tape-neon text-zinc-950 font-mono text-[10px] font-bold px-5 py-1 transform rotate-3 z-20 select-none shadow">
+            URGENT DOSSIER #883
+          </div>
+<div class="absolute -top-3 right-10 masking-tape px-6 py-1 font-mono text-[10px] font-bold text-zinc-800 transform -rotate-4 z-20 select-none shadow">
+            ATMOSPHERE LEAK
+          </div>
+<!-- Stamped badge -->
+<div class="flex justify-between items-start gap-2 mb-4 pt-2">
+<span class="sticker-stamp bg-zinc-900 text-spray-cyan border border-spray-cyan/40 font-mono text-xs font-bold px-2.5 py-1 rounded transform rotate-2 inline-block">
+              SATELLITE DESYNC // TIER 4
+            </span>
+<span class="sticker-stamp bg-yellow-400 text-zinc-950 font-marker text-xs px-2.5 py-0.5 rounded transform -rotate-3 shadow">
+              CAUTION: REALITY LOOP
+            </span>
+</div>
+<!-- Heading & Metadata -->
+<div class="space-y-3 mb-5">
+<h2 class="font-grotesk text-2xl sm:text-3xl font-black uppercase text-white leading-tight">
+              THE SKY CEILING PROTOCOL: <span class="text-spray-cyan underline decoration-acid-lime decoration-2">CLOUD FORMATIONS REPEATING</span> IN 72-HOUR HEX LOOPS
+            </h2>
+<div class="font-mono text-xs text-zinc-400 flex flex-wrap gap-x-4 gap-y-1 font-semibold border-b border-dashed border-zinc-700 pb-2">
+<span>DECODED: 04:20 AM</span>
+<span class="text-zinc-300">SOURCE: ROGUE METEOROLOGIST-X</span>
+<span class="text-toxic-green font-bold">HEX BUFFER CONFIRMED</span>
+</div>
+</div>
+<!-- RADAR TELEMETRY SIMULATION -->
+<div class="bg-zinc-900 p-4 rounded-lg space-y-3 relative overflow-hidden mb-5 border border-zinc-800 shadow-inner">
+<div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+<span class="font-mono text-xs text-spray-cyan font-bold uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">satellite_alt</span>
+                RADAR TELEMETRY // SECTOR GRID 90-OMEGA
+              </span>
+<span class="bg-acid-lime text-zinc-950 font-mono text-[10px] font-black px-2 py-0.5 rounded -rotate-2">
+                LOOP BUFFER: 72H
+              </span>
+</div>
+<!-- Radar Graphic Box -->
+<div class="relative w-full h-24 bg-black rounded flex items-center justify-center overflow-hidden border border-zinc-800">
+<!-- Concentric Radar Rings -->
+<div class="absolute w-16 h-16 rounded-full border border-spray-cyan/30"></div>
+<div class="absolute w-36 h-36 rounded-full border border-spray-cyan/20"></div>
+<div class="absolute w-full h-px bg-spray-cyan/20"></div>
+<div class="absolute h-full w-px bg-spray-cyan/20"></div>
+<!-- Rotating Sweep line -->
+<div class="absolute w-1/2 h-0.5 bg-gradient-to-r from-transparent to-spray-cyan origin-left left-1/2 animate-spin"></div>
+<!-- Stamped sticker label -->
+<div class="relative z-10 bg-yellow-400 text-zinc-950 font-marker text-xs px-2.5 py-1 rounded shadow-lg transform -rotate-3 select-none">
+                THEY CANNOT HIDE THE HORIZON
+              </div>
+</div>
+<div class="flex items-center justify-between text-[11px] font-mono text-zinc-400">
+<span>HEX: 0x7E3A9F // IDENTICAL PATTERN</span>
+<span class="text-spray-pink font-bold">GEODETIC RE-RENDER CAUGHT</span>
+</div>
+</div>
+<!-- Body Narrative -->
+<div class="font-typewriter text-sm text-zinc-300 space-y-3 leading-relaxed mb-6">
+<p>
+              Field recordings from astronomical trackers during open-air Nevada desert raves registered mathematical rendering errors in the troposphere. High-resolution imagery confirms that cloud cluster sequences recorded on June 14 matched pixel-for-pixel the cluster sequences rendered exactly 72 hours later.
+            </p>
+<p>
+              When weather balloons deployed spectrometer probes into the boundary layer, telemetry recorded an immediate artificial latency spike of 400 milliseconds. The atmosphere isn't reacting to pressure—<span class="highlighter-yellow text-zinc-950 font-bold px-1">it is buffering in 8-bit RAM.</span>
+</p>
+</div>
+<!-- Hash Verification sticker bar -->
+<div class="p-3 bg-zinc-900/90 rounded-lg flex items-center justify-between gap-3 mb-6 border border-zinc-800">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-toxic-green text-lg">lock</span>
+<span class="font-mono text-xs text-zinc-400">PACKET SHA-256: <span class="text-zinc-200">e8b9...f4a1</span></span>
+</div>
+<span class="bg-toxic-green text-zinc-950 font-mono text-[10px] font-black px-2 py-0.5 rounded">
+              HASH VERIFIED
+            </span>
+</div>
+<!-- Card Footer Download CTA -->
+<div class="pt-4 border-t border-zinc-800 flex items-center justify-between gap-2 flex-wrap">
+<button class="bg-acid-lime hover:bg-yellow-300 text-zinc-950 font-marker text-sm px-4 py-2 rounded transform rotate-1 shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2" id="download-transmission-btn">
+<span class="material-symbols-outlined text-base">download</span>
+<span>DOWNLOAD PIRATE REPO</span>
+</button>
+<span class="font-mono text-[11px] text-zinc-400 font-bold uppercase" id="download-status">
+              [DIRECT TOR LINK READY]
+            </span>
+</div>
+</article>
+</section>
+<!-- ================= UNDERGROUND GUESTBOOK / ANONYMOUS BATHROOM STALL INTEL ================= -->
+<section class="relative w-full bg-zinc-900/95 border border-zinc-800 rounded-2xl p-6 sm:p-10 overflow-hidden shadow-2xl">
+<!-- Spray paint accent markings in corner -->
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-neon-pink/10 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Section Header & Coded Alias Box -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-800 pb-6 mb-6">
+<div>
+<div class="inline-block bg-neon-pink text-white font-mono text-[11px] font-extrabold uppercase px-2.5 py-0.5 rounded-sm transform -rotate-1 mb-2">
+              LIVE BATHROOM STALL WALL // CIPHER FEED
+            </div>
+<h2 class="font-grotesk text-2xl sm:text-3xl font-black uppercase text-white tracking-tight">
+              ANONYMOUS INTEL LOGS <span class="text-acid-lime">//</span> SCRAWL YOUR EVIDENCE
+            </h2>
+</div>
+<!-- IDENTITY BADGE (Looks like a peel-off sticker name tag) -->
+<div class="bg-zinc-950 border border-zinc-800 p-2.5 rounded-lg flex items-center gap-3 self-start md:self-auto transform -rotate-1">
+<div class="flex flex-col">
+<span class="font-mono text-[10px] text-zinc-400 font-bold uppercase">YOUR ALIAS TAG:</span>
+<span class="font-marker text-lg text-spray-cyan spray-glow-cyan" id="active-alias">[TruthSeeker-94]</span>
+</div>
+<button class="bg-zinc-800 hover:bg-spray-pink hover:text-white text-zinc-300 p-2 rounded-md font-mono text-xs transition-colors flex items-center justify-center shadow" id="reroll-alias-btn" title="Reroll Secret Identity">
+<span class="material-symbols-outlined text-base">shuffle</span>
+</button>
+</div>
+</div>
+<!-- FORM TERMINAL / SCRAWL PAD -->
+<form class="space-y-4" id="comment-terminal-form">
+<div class="space-y-1.5">
+<div class="flex items-center justify-between font-mono text-xs text-zinc-400">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-toxic-green">terminal</span>
+                ENCRYPTED 4096-BIT INPUT
+              </span>
+<span id="char-counter">0 / 280 CHARACTERS</span>
+</div>
+<textarea class="w-full bg-zinc-950 text-zinc-100 font-mono text-sm rounded-lg border border-zinc-800 p-4 focus:border-acid-lime focus:ring-1 focus:ring-acid-lime focus:outline-none placeholder:text-zinc-600 transition-all resize-y min-h-[90px]" id="comment-input" maxlength="280" placeholder="[TYPE YOUR UNFILTERED TESTIMONY OR ANONYMOUS LEAK HERE...]" required="" rows="3"></textarea>
+</div>
+<!-- THREAT TAGS & SUBMIT BUTTON -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="font-mono text-xs font-bold text-zinc-400 mr-1 uppercase">STICKER TAG:</span>
+<button class="tag-selector-btn bg-acid-lime text-zinc-950 font-mono text-xs px-3 py-1 rounded font-bold uppercase transform -rotate-1 shadow transition-all" data-tag="CONSPIRACY VERIFIED" type="button">
+                [CONSPIRACY VERIFIED]
+              </button>
+<button class="tag-selector-btn bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-mono text-xs px-3 py-1 rounded font-bold uppercase transform rotate-1 border border-zinc-700 transition-all" data-tag="EYEWITNESS REPORT" type="button">
+                [EYEWITNESS REPORT]
+              </button>
+<button class="tag-selector-btn bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-mono text-xs px-3 py-1 rounded font-bold uppercase transform -rotate-1 border border-zinc-700 transition-all" data-tag="DEBUNKING THE COVERUP" type="button">
+                [DEBUNKING THE COVERUP]
+              </button>
+</div>
+<button class="bg-gradient-to-r from-neon-pink to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-marker text-sm uppercase px-6 py-2.5 rounded-lg shadow-[0_0_20px_rgba(255,0,127,0.5)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2" type="submit">
+<span>SPRAY ONTO THE WALL</span>
+<span class="material-symbols-outlined text-lg">bolt</span>
+</button>
+</div>
+</form>
+<!-- LIVE STREAM FEED -->
+<div class="mt-8 space-y-3">
+<div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+<span class="font-mono text-xs font-bold text-zinc-400 uppercase tracking-wider">
+              INTERCEPTED VOICES // CHRONOLOGICAL LOG
+            </span>
+<span class="font-mono text-xs text-toxic-green font-bold uppercase flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-toxic-green animate-ping"></span>
+              SOCKET CONNECTED
+            </span>
+</div>
+<!-- DYNAMIC COMMENT CONTAINER -->
+<div class="space-y-3.5" id="comments-container">
+<!-- Comment 1 -->
+<div class="bg-zinc-950/80 border border-zinc-800/80 rounded-lg p-4 space-y-2 hover:border-zinc-700 transition-all transform hover:-translate-y-0.5">
+<div class="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+<div class="flex items-center gap-2">
+<span class="bg-zinc-800 text-white px-2 py-0.5 rounded font-bold uppercase tracking-wider border border-zinc-700">Agent-77 (Level 3 Informant)</span>
+<span class="text-zinc-500">NODE: 192.88.0.1</span>
+</div>
+<span class="bg-acid-lime text-zinc-950 px-2 py-0.5 rounded font-black text-[10px] uppercase">[VERIFIED EVIDENCE]</span>
+</div>
+<p class="font-grotesk text-sm text-zinc-200 leading-relaxed">
+                I felt the frequency pulse at 3:14 AM near warehouse 9. The neon lights flickered in binary. Checked the hydro grid afterwards and power had zero drops—it was pure broadcast oscillation.
+              </p>
+<div class="font-mono text-[11px] text-zinc-500 flex items-center gap-4">
+<span>TIMESTAMP: 14 MINS AGO</span>
+<span class="text-acid-lime font-bold">CIPHER: #B8721</span>
+</div>
+</div>
+<!-- Comment 2 -->
+<div class="bg-zinc-950/80 border border-zinc-800/80 rounded-lg p-4 space-y-2 hover:border-zinc-700 transition-all transform hover:-translate-y-0.5">
+<div class="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+<div class="flex items-center gap-2">
+<span class="bg-zinc-800 text-white px-2 py-0.5 rounded font-bold uppercase tracking-wider border border-zinc-700">TruthSeeker-33 (Signal Runner)</span>
+<span class="text-zinc-500">NODE: TOR-CIRCUIT-7</span>
+</div>
+<span class="bg-spray-pink text-white px-2 py-0.5 rounded font-black text-[10px] uppercase">[EYEWITNESS REPORT]</span>
+</div>
+<p class="font-grotesk text-sm text-zinc-200 leading-relaxed">
+                Do not listen on commercial headphones. Use analog copper coils or the carrier wave will be filtered! The high shelf reduction in normal DAC chips is deliberately neutralizing the 19kHz truth tone.
+              </p>
+<div class="font-mono text-[11px] text-zinc-500 flex items-center gap-4">
+<span>TIMESTAMP: 32 MINS AGO</span>
+<span class="text-spray-cyan font-bold">CIPHER: #C0094</span>
+</div>
+</div>
+<!-- Comment 3 -->
+<div class="bg-zinc-950/80 border border-zinc-800/80 rounded-lg p-4 space-y-2 hover:border-zinc-700 transition-all transform hover:-translate-y-0.5">
+<div class="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+<div class="flex items-center gap-2">
+<span class="bg-zinc-800 text-white px-2 py-0.5 rounded font-bold uppercase tracking-wider border border-zinc-700">CipherWatcher-101</span>
+<span class="text-zinc-500">NODE: ZURICH-RELAY</span>
+</div>
+<span class="bg-spray-cyan text-zinc-950 px-2 py-0.5 rounded font-black text-[10px] uppercase">[DEBUNKING THE COVERUP]</span>
+</div>
+<p class="font-grotesk text-sm text-zinc-200 leading-relaxed">
+                They took down the mirror site in Zurich within 12 minutes. We are definitely hitting a nerve. Everyone save the audio manifests locally onto tape drives now.
+              </p>
+<div class="font-mono text-[11px] text-zinc-500 flex items-center gap-4">
+<span>TIMESTAMP: 1 HOUR AGO</span>
+<span class="text-acid-lime font-bold">CIPHER: #A9102</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- CLIENT SCRIPT LOGIC (Strictly preserving functional requirements) -->
+<script>
+      (function initTruthTerminal() {
+        // Identity Alias Pool
+        var aliases = [
+          'TruthSeeker-94',
+          'Agent-77',
+          'Phantom-09',
+          'GlitchWalker-404',
+          'CipherGhost-13',
+          'NeonSpecter-88',
+          'Vigilant-62',
+          'BassInfiltrator-00',
+          'SublimeRogue-55'
+        ];
+        var currentAliasIndex = 0;
+
+        var activeAliasEl = document.getElementById('active-alias');
+        var rerollBtn = document.getElementById('reroll-alias-btn');
+
+        if (rerollBtn && activeAliasEl) {
+          rerollBtn.addEventListener('click', function() {
+            currentAliasIndex = (currentAliasIndex + 1) % aliases.length;
+            activeAliasEl.textContent = '[' + aliases[currentAliasIndex] + ']';
+          });
+        }
+
+        // Selected Threat Tag State
+        var activeTag = 'CONSPIRACY VERIFIED';
+        var tagButtons = document.querySelectorAll('.tag-selector-btn');
+        tagButtons.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            tagButtons.forEach(function(b) {
+              b.className = 'tag-selector-btn bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-mono text-xs px-3 py-1 rounded font-bold uppercase border border-zinc-700 transition-all';
+            });
+            btn.className = 'tag-selector-btn bg-acid-lime text-zinc-950 font-mono text-xs px-3 py-1 rounded font-bold uppercase transform -rotate-1 shadow transition-all';
+            activeTag = btn.getAttribute('data-tag');
+          });
+        });
+
+        // Character Counter
+        var commentInput = document.getElementById('comment-input');
+        var charCounter = document.getElementById('char-counter');
+        if (commentInput && charCounter) {
+          commentInput.addEventListener('input', function() {
+            charCounter.textContent = commentInput.value.length + ' / 280 CHARACTERS';
+          });
+        }
+
+        // Comment Submission (In-Memory Live Appending)
+        var terminalForm = document.getElementById('comment-terminal-form');
+        var commentsContainer = document.getElementById('comments-container');
+
+        if (terminalForm && commentsContainer && commentInput) {
+          terminalForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var text = commentInput.value.trim();
+            if (!text) return;
+
+            var aliasName = aliases[currentAliasIndex];
+            var randomHash = '#X' + Math.floor(1000 + Math.random() * 9000);
+            var randomNode = 'RELAY-0' + Math.floor(1 + Math.random() * 9);
+
+            // Build new street-art styled card
+            var card = document.createElement('div');
+            card.className = 'bg-zinc-950 border border-spray-pink/50 rounded-lg p-4 space-y-2 transition-all transform -translate-y-1 shadow-lg animate-pulse';
+
+            card.innerHTML = 
+              '<div class="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">' +
+                '<div class="flex items-center gap-2">' +
+                  '<span class="bg-neon-pink text-white px-2 py-0.5 rounded font-bold uppercase tracking-wider">' + aliasName + '</span>' +
+                  '<span class="text-zinc-500">NODE: ' + randomNode + '</span>' +
+                '</div>' +
+                '<span class="bg-acid-lime text-zinc-950 px-2 py-0.5 rounded font-black text-[10px] uppercase">[' + activeTag + ']</span>' +
+              '</div>' +
+              '<p class="font-grotesk text-sm text-zinc-100 leading-relaxed">' + escapeHtml(text) + '</p>' +
+              '<div class="font-mono text-[11px] text-zinc-500 flex items-center gap-4">' +
+                '<span>TIMESTAMP: JUST NOW</span>' +
+                '<span class="text-toxic-green font-bold">CIPHER: ' + randomHash + '</span>' +
+              '</div>';
+
+            commentsContainer.insertBefore(card, commentsContainer.firstChild);
+
+            setTimeout(function() {
+              card.classList.remove('animate-pulse');
+            }, 600);
+
+            commentInput.value = '';
+            if (charCounter) charCounter.textContent = '0 / 280 CHARACTERS';
+          });
+        }
+
+        function escapeHtml(str) {
+          return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+        }
+
+        // Redaction Unmask Toggle
+        var toggleRedactionBtn = document.getElementById('toggle-redaction-btn');
+        var isUnmasked = false;
+        var redactionSpans = document.querySelectorAll('.redaction-block');
+
+        if (toggleRedactionBtn) {
+          toggleRedactionBtn.addEventListener('click', function() {
+            isUnmasked = !isUnmasked;
+            redactionSpans.forEach(function(span) {
+              if (isUnmasked) {
+                span.textContent = span.getAttribute('data-redacted');
+                span.className = 'bg-yellow-300 text-zinc-950 px-1.5 py-0.5 rounded font-mono font-bold text-xs shadow inline-block transform -rotate-1';
+              } else {
+                span.textContent = span.getAttribute('data-redacted');
+                span.className = 'bg-zinc-950 text-zinc-950 px-1 py-0.5 rounded transition-all duration-200 cursor-pointer select-all font-mono text-xs redaction-block';
+              }
+            });
+            toggleRedactionBtn.textContent = isUnmasked ? 'MASK CLASSIFIED DATA' : 'UNMASK REDACTED NAMES';
+          });
+        }
+
+        // Signal Amplitude Upvote Incrementer
+        var hypeBtn01 = document.getElementById('hype-btn-01');
+        var hypeCount01 = document.getElementById('hype-count-01');
+        var count = 8421;
+        var hyped = false;
+
+        if (hypeBtn01 && hypeCount01) {
+          hypeBtn01.addEventListener('click', function() {
+            if (!hyped) {
+              count += 1;
+              hypeCount01.textContent = count.toLocaleString() + ' AWAKENED';
+              hypeBtn01.className = 'bg-acid-lime text-zinc-950 font-marker text-sm px-4 py-2 rounded transform rotate-1 shadow-[0_0_15px_rgba(204,255,0,0.8)] transition-all flex items-center gap-2';
+              hyped = true;
+            }
+          });
+        }
+
+        // Mock Download Button Trigger
+        var dlBtn = document.getElementById('download-transmission-btn');
+        var dlStatus = document.getElementById('download-status');
+        if (dlBtn && dlStatus) {
+          dlBtn.addEventListener('click', function() {
+            dlStatus.textContent = '[DECRYPTING STREAM: 100%]';
+            dlStatus.className = 'font-mono text-xs text-neon-pink font-bold uppercase animate-pulse';
+            setTimeout(function() {
+              dlStatus.textContent = '[DOWNLOAD DISPATCHED TO MEMORY CACHE]';
+              dlStatus.className = 'font-mono text-xs text-toxic-green font-bold uppercase';
+            }, 1200);
+          });
+        }
+      })();
+    </script>
+</main>
+<!-- ANARCHIC GRAFFITI FOOTER -->
+<footer class="w-full bg-zinc-950/90 border-t border-zinc-800/80 py-4 px-4 md:px-8 mt-auto relative z-20">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 font-mono text-xs text-zinc-400">
+<div class="flex items-center gap-3 flex-wrap">
+<span class="bg-red-700 text-white px-2 py-0.5 rounded-sm font-marker text-[10px] transform -rotate-1">
+          PARTY PROTOCOL: TERMINATED
+        </span>
+<span class="text-zinc-500">//</span>
+<span class="bg-zinc-900 border border-zinc-800 text-spray-cyan px-2 py-0.5 rounded text-[11px]">
+          NODE: OBSERVER-404
+        </span>
+<span class="flex items-center gap-1.5 text-zinc-300">
+<span class="w-1.5 h-1.5 rounded-full bg-acid-lime animate-ping"></span>
+          TOR TUNNEL: UNLOCKED
+        </span>
+</div>
+<div class="flex items-center gap-4 text-zinc-500 text-[11px]">
+<span>// COUNTER-SURVEILLANCE ZINE COLLECTIVE</span>
+<span class="text-zinc-400 font-bold">STAY UNCONVINCED</span>
+</div>
+</div>
+</footer>
+</body></html>
